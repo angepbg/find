@@ -22,8 +22,9 @@ class MatricesController extends Controller
     	->with('vectores',$vector);
     }
     public function create()
-    {
-
+    {	
+    	$vectores = $_GET['vectores[]'];
+    	echo $valor;
     } 
     public function store(Request $request)
     {
@@ -31,7 +32,6 @@ class MatricesController extends Controller
     }
     public function edit($id)
     {
-        
     }
     public function show($id)
     {

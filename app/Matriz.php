@@ -1,6 +1,5 @@
 <?php
 namespace App;
-
 class Matriz{
 	public $matriz = array();
 	public $fil;
