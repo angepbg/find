@@ -20,7 +20,8 @@
 		
 			<div class="row">
 				<div class="">
-				    <select id="valor" name="valor" onchange="calcular( <?php echo $vectores[.'this.value'.]->fil ?> );">
+
+				    <select id="valor" name="valor"  onchange="calcular({{ json_encode($vectores) }}, this.value);">
 				      <option value="" disabled selected>Choose your option</option>
 				      <option value="0">Option 1</option>
 				      <option value="1">Option 2</option>
@@ -39,24 +40,23 @@
   });
 </script>
 <script>
-        function calcular(vectores){
-        	alert("holissss");
-        	// alert($vectores);
-         //    var parametros = {
-         //        'vectores[]' : vectores[]
-         //    };
-         //    $.ajax({
-         //        data:  parametros,
-         //        dataType: 'json',
-         //        url:   'create',
-         //        type:  'GET',
-         //        beforeSend: function () {
-         //            $("#resultado").html("Procesando...");
-         //        },
-         //        success:  function (response) {
-         //            $("#resultado").html(response);
-         //        }
-         //    });
+        function calcular(vectores, valor){
+        	alert($vectores);
+            var parametros = {
+                'vectores[]' : vectores[]
+            };
+            $.ajax({
+                data:  parametros,
+                dataType: 'json',
+                url:   'create',
+                type:  'GET',
+                beforeSend: function () {
+                    $("#resultado").html("Procesando...");
+                },
+                success:  function (response) {
+                    $("#resultado").html(response);
+                }
+            });
         };
     </script>
 @endsection
