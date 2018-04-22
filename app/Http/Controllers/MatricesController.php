@@ -23,12 +23,65 @@ class MatricesController extends Controller
     }
     public function create()
     {	
-    	$vectores = $_GET['vectores[]'];
-    	echo $valor;
+    	$vectores = $_GET['vectores'];
+    	$valor = $_GET['valor'];
+    	$cont = 0;
+    	for($i=0; $i< $vectores[$valor]['fil']; $i++){
+    		for ($j=0; $j < $vectores[$valor]['col'] ; $j++) { 
+    			if($vectores[$valor]['matriz'][$i][$j] === 'i'){
+    				//arriba y abajo
+    				if($i > 0 && $i < ($vectores[$valor]['fil'] - 1) ){
+    					if( $vectores[$valor]['matriz'][$i-1][$j] === 'e' && $vectores[$valor]['matriz'][$i+1][$j] === 'o' ){
+    						$cont++;
+    					}
+    					else{
+    						if( $vectores[$valor]['matriz'][$i-1][$j] === 'o' && $vectores[$valor]['matriz'][$i+1][$j] === 'e' ){
+    							$cont++;
+    						}
+    					}
+    				}
+    				// //izquierda y derecha
+    				if($j > 0 && $j < ($vectores[$valor]['col'] - 1) ){
+    					if( $vectores[$valor]['matriz'][$i][$j-1] === 'e' && $vectores[$valor]['matriz'][$i][$j+1] === 'o' ){
+    						$cont++;
+    					}
+    					else{
+    						if( $vectores[$valor]['matriz'][$i][$j-1] === 'o' && $vectores[$valor]['matriz'][$i][$j+1] === 'e' ){
+    							$cont++;
+    						}
+    					}
+    				}
+    				//diagonal principal
+    				if($i > 0 && $i < ($vectores[$valor]['fil'] - 1) && $j>0 && $j < ($vectores[$valor]['col'] - 1)  ) {
+    					
+    					if( $vectores[$valor]['matriz'][$i-1][$j-1] === 'e' && $vectores[$valor]['matriz'][$i+1][$j+1] === 'o' ){
+    						$cont++;
+    					}
+    					else{
+    						if( $vectores[$valor]['matriz'][$i-1][$j-1] === 'o' && $vectores[$valor]['matriz'][$i+1][$j+1] === 'e' ){
+	    						$cont++;
+	    					}
+    					}
+    				}
+    				//diagonal secundaria
+    				if($i>0 && $i < ($vectores[$valor]['fil'] - 1) && $j>0 && $j < ($vectores[$valor]['col'] - 1) ){
+    					if( $vectores[$valor]['matriz'][$i-1][$j+1] === 'e' && $vectores[$valor]['matriz'][$i+1][$j-1] === 'o' ){
+    						$cont++;
+    					}
+    					else{
+    						if( $vectores[$valor]['matriz'][$i-1][$j+1] === 'o' && $vectores[$valor]['matriz'][$i+1][$j-1] === 'e' ){
+	    						$cont++;
+	    					}
+    					}
+    				}
+    			}
+    		}
+    	}
+    	echo $cont;
     } 
     public function store(Request $request)
     {
-
+    	
     }
     public function edit($id)
     {
@@ -38,7 +91,7 @@ class MatricesController extends Controller
         
     }
 
-    public function update(ContenidoRequest $request, $id)
+    public function update(Request $request, $id)
     {
         
     }
