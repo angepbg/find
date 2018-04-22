@@ -45,11 +45,6 @@ class Matriz{
     		array('e','x'),
     	);
 	}
-	public function calcular($vectores, $valor, $fil, $col){
-		echo "hellokity";
-		
-		return "hola";
-	}
 }
 
 ?>

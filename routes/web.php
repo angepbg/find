@@ -11,4 +11,11 @@
 |
 */
 
-Route::resource('/', 'MatricesController');
+Route::get('/',[
+	'uses'=>'MatricesController@index',
+	'as'=>'index'
+]);
+Route::get('calcular',[
+	'uses'=>'MatricesController@calcular',
+	'as'=>'calcular'
+]);

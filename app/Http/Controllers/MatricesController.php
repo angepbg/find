@@ -21,7 +21,7 @@ class MatricesController extends Controller
     	return view('home')
     	->with('vectores',$vector);
     }
-    public function create()
+    public function calcular()
     {	
     	$vectores = $_GET['vectores'];
     	$valor = $_GET['valor'];
@@ -79,24 +79,4 @@ class MatricesController extends Controller
     	}
     	echo $cont;
     } 
-    public function store(Request $request)
-    {
-    	
-    }
-    public function edit($id)
-    {
-    }
-    public function show($id)
-    {
-        
-    }
-
-    public function update(Request $request, $id)
-    {
-        
-    }
-
-    public function destroy($id)
-    {
-    }
 }

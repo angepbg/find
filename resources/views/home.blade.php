@@ -2,8 +2,9 @@
 @section('titulo', 'COR')
 
 @section('paginas')
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script src="{{ asset('js/ajax.js') }}"></script>
 <div class="container">
 	<div class="row">
 	@for($k=0; $k < 4; $k++)
@@ -40,26 +41,5 @@
 	$(document).ready(function(){
     $('select').formSelect();
   });
-</script>
-<script>
-    function calcular(vectores, valor){
-    	
-        var parametros = {
-            'vectores' : vectores,
-            'valor' : valor,
-        };
-        $.ajax({
-            data:  parametros,
-            dataType: 'json',
-            url:   'create',
-            type:  'GET',
-            beforeSend: function () {
-                $("#resultado").html("Procesando...");
-            },
-            success:  function (response) {
-                $("#resultado").html(response);
-            }
-        });
-    };
 </script>
 @endsection
